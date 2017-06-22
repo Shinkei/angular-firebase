@@ -3,14 +3,14 @@ import { FirebaseService } from '../../services/firebase.service';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 
 @Component({
-  selector: 'app-listing',
-  templateUrl: './listing.component.html',
-  styleUrls: ['./listing.component.css']
+  selector: 'app-character',
+  templateUrl: './character.component.html',
+  styleUrls: ['./character.component.css']
 })
-export class ListingComponent implements OnInit {
+export class CharacterComponent implements OnInit {
 
   id: any;
-  listing: any;
+  character: any;
   imageUrl: any;
 
   constructor(private firebaseService: FirebaseService, private router: Router, private activateRoute: ActivatedRoute) { }
@@ -18,8 +18,8 @@ export class ListingComponent implements OnInit {
   ngOnInit() {
     this.id = this.activateRoute.snapshot.params['id'];
 
-    this.firebaseService.getListingDetails(this.id).subscribe(listing =>{
-      this.listing = listing;
+    this.firebaseService.getCharacterDetails(this.id).subscribe(character =>{
+      this.character = character;
     });
   }
 

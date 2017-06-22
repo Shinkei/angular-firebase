@@ -5,48 +5,30 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class FirebaseService {
 
-  listings: FirebaseListObservable<any[]>;
-  listing: FirebaseObjectObservable<any[]>;
-  folder: any;
+  characters: FirebaseListObservable<any[]>;
+  character: FirebaseObjectObservable<any[]>;
 
   constructor(private angularFire: AngularFireDatabase) { 
-    this.folder = 'listingImages';
   }
 
-  getListings(){
-    this.listings = this.angularFire.list('/listings') as FirebaseListObservable<Listing[]>;
-    return this.listings;
+  getCharacters(){
+    this.characters = this.angularFire.list('/characters') as FirebaseListObservable<Character[]>;
+    return this.characters;
   }
 
-  getListingDetails(id){
-    this.listing = this.angularFire.object('/listings/' + id) as FirebaseObjectObservable<Listing>;
-    return this.listing;
+  getCharacterDetails(id){
+    this.character = this.angularFire.object('/characters/' + id) as FirebaseObjectObservable<Character>;
+    return this.character;
   }
 
-  addListing(listing){
-    debugger;
-    let storageRef = firebase.storage().ref();
-
-    for(let selectedFile of [(<HTMLInputElement>document.getElementById('image')).files[0]]){
-      let path = `/${this.folder}/${selectedFile.name}`;
-      let iRef = storageRef.child(path);
-      iRef.put(selectedFile).then((snapshot) => {
-        listing.image = selectedFile.name;
-        listing.path = path;
-        return this.listings.push(listing);
-      });
-    }
-
+  addCharacter(character){
+    this.angularFire.list('/characters').push(character);
   }
 }
 
-interface Listing{
+interface Character{
   $key?: string;
-  title?: string;
-  type?: string;
-  image?: string;
+  name?: string;
+  race?: string;
   city?: string;
-  owner?: string;
-  bedrooms?: string;
-
 }

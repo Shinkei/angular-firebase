@@ -1,0 +1,18 @@
+<a [routerLink]="['/characters']">Back</a>
+<br />
+<h2 class="page-header">Add Character</h2>
+<form (submit)="onAddSubmit()">
+  <div class="form-group">
+    <label>Name</label>
+    <input class="form-control" type="text" [(ngModel)]="name" name="name" required>
+  </div>
+  <div class="form-group">
+    <label>City</label>
+    <input class="form-control" type="text" [(ngModel)]="city" name="city" required>
+  </div>
+  <div class="form-group">
+    <label>Race</label>
+    <input class="form-control" type="text" [(ngModel)]="race" name="race" required>
+  </div>
+  <input type="submit" value="submit" class="btn btn-success">
+</form>

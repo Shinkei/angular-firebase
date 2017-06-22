@@ -10,11 +10,10 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { ListingsComponent } from './components/listings/listings.component';
+import { CharactersComponent } from './components/characters/characters.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { ListingComponent } from './components/listing/listing.component';
-import { AddListingComponent } from './components/add-listing/add-listing.component';
-import { EditListingComponent } from './components/edit-listing/edit-listing.component';
+import { CharacterComponent } from './components/character/character.component';
+import { AddCharacterComponent } from './components/add-character/add-character.component';
 
 import { FirebaseService } from './services/firebase.service';
 
@@ -29,20 +28,19 @@ export const firebaseConfig = {
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'listings', component: ListingsComponent},
-  {path: 'add-listing', component: AddListingComponent},
-  {path: 'listing/:id', component: ListingComponent}
+  {path: 'characters', component: CharactersComponent},
+  {path: 'add-character', component: AddCharacterComponent},
+  {path: 'character/:id', component: CharacterComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ListingsComponent,
+    CharactersComponent,
     NavbarComponent,
-    ListingComponent,
-    AddListingComponent,
-    EditListingComponent
+    CharacterComponent,
+    AddCharacterComponent
   ],
   imports: [
     BrowserModule,
